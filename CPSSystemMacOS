@@ -1,0 +1,7 @@
+gcc -o shared_lib shared_lib.h
+
+gcc -o ecg_server ECG_Server.c
+
+gcc -o img_server Image_Server.c
+
+gcc -o maincps MainCPS.c

@@ -1,0 +1,23 @@
+all: ecg_server img_server maincps shared_lib
+
+shared_lib: shared_lib.h
+        gcc -o shared_lib shared_lib.c
+
+ecg_server: ECG_Server.c
+        gcc -o ecg_server ECG_Server.c
+
+img_server: Image_Server.c
+        gcc -o img_server Image_Server.c
+
+maincps: MainCPS.c
+        gcc -o maincps MainCPS.c
+
+clear:
+        clear
+
+run: all
+        gnome-terminal -- bash -c "./ecg_server; exec bash" &
+        gnome-terminal -- bash -c "./img_server; exec bash" &
+        gnome-terminal -- bash -c "./maincps; exec bash" &
+        sleep 1
+        gnome-terminal -- bash -c "make clear; exec bash" &
