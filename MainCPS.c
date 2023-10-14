@@ -181,12 +181,6 @@ int main(){
     // ecg client created
     case 0:
 
-        // display
-        printf("-------------------------------");
-        printf("\nMedical CPS System Simulation\n");
-        printf("-------------------------------\n\n");
-        printf("[SYSTEM]: ECG Client online...\n\n");
-
         // give ecg fifo its name
         sprintf(ecg_client_name, ECG_CLIENT_NAME, getpid());
 
@@ -240,12 +234,6 @@ int main(){
         // img client created
         case 0:
 
-            // display
-            printf("-------------------------------");
-            printf("\nMedical CPS System Simulation\n");
-            printf("-------------------------------\n\n");
-            printf("[SYSTEM]: Clients online...\n\n");
-
             // give img fifo its name
             sprintf(img_client_name, IMG_CLIENT_NAME, getpid());
 
@@ -286,6 +274,12 @@ int main(){
         // still in parent process; do program termination and signal handling
         default:
 
+            // display
+            printf("-------------------------------");
+            printf("\nMedical CPS System Simulation\n");
+            printf("-------------------------------\n\n");
+            printf("[SYSTEM]: Clients online...\n\n");
+            
             // handle signal
             sig_act.sa_flags = 0;
             sig_act.sa_handler = termination_notice;
