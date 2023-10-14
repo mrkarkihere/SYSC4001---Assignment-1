@@ -160,6 +160,12 @@ void termination_notice(int sig, siginfo_t *info, void *ucontext_t){
 
 int main(){
 
+    // display
+    printf("-------------------------------");
+    printf("\nMedical CPS System Simulation\n");
+    printf("-------------------------------\n\n");
+    printf("[SYSTEM]: Clients online...\n\n");
+    
     pid_t ecg_client_pid, img_client_pid;
     int ecg_client_fd, img_client_fd, ecg_server_fd, img_server_fd;
     struct sigaction sig_act;
@@ -274,12 +280,6 @@ int main(){
         // still in parent process; do program termination and signal handling
         default:
 
-            // display
-            printf("-------------------------------");
-            printf("\nMedical CPS System Simulation\n");
-            printf("-------------------------------\n\n");
-            printf("[SYSTEM]: Clients online...\n\n");
-            
             // handle signal
             sig_act.sa_flags = 0;
             sig_act.sa_handler = termination_notice;
